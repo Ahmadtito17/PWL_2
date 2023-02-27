@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TugasController;
+use App\Http\Controllers\WebController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,64 +43,83 @@ use Illuminate\Support\Facades\Route;
 
 //Route::get('/articles/{id}', [ArticleController::class, 'index']);
 
-Route::get('/', function () {
-    return "Halaman Home <br>
-            Menampilkan halaman awal website";
+// Minggu 2
+
+// Route::get('/', function () {
+//     return "Halaman Home <br>
+//             Menampilkan halaman awal website";
+// });
+
+// Route::prefix('category')->group(function () {
+//     Route::get('/', function () {
+//         return 'Halaman Products <br>
+//             Menampilkan daftar product ( route prefix) <br>
+//             <a href="https://www.educastudio.com/category/marbel-edu-games">https://www.educastudio.com/category/marbel-edu-games</a> <br>
+//             <a href="https://www.educastudio.com/category/marbel-and-friends-kids-games">https://www.educastudio.com/category/marbel-and-friends-kids-games</a> <br>
+//             <a href="https://www.educastudio.com/category/riri-story-books">https://www.educastudio.com/category/riri-story-books</a> <br>
+//             <a href="https://www.educastudio.com/category/kolak-kids-songs">https://www.educastudio.com/category/kolak-kids-songs</a>';
+//     });
+//     Route::get('/marbel-edu-games', function () {
+//         return '<a href="https://www.educastudio.com/category/marbel-edu-games">https://www.educastudio.com/category/marbel-edu-games</a>';
+//     });
+//     Route::get('/marbel-and-friends-kids-games', function () {
+//         return '<a href="https://www.educastudio.com/category/marbel-and-friends-kids-games">https://www.educastudio.com/category/marbel-and-friends-kids-games</a>';
+//     });
+//     Route::get('/riri-story-books', function () {
+//         return '<a href="https://www.educastudio.com/category/riri-story-books">https://www.educastudio.com/category/riri-story-books</a>';
+//     });
+//     Route::get('/kolak-kids-songs', function () {
+//         return '<a href="https://www.educastudio.com/category/kolak-kids-songs">https://www.educastudio.com/category/kolak-kids-songs</a>';
+//     });
+// });
+
+// Route::get('/articles/{id}', function ($id) {
+//     return 'Halaman News <br>
+//         Menampilkan Daftar berita (route param) <br>
+//         <a href="https://www.educastudio.com/news">https://www.educastudio.com/news</a> <br>
+//         <a href="https://www.educastudio.com/news/educa-studio-berbagi-untuk-warga-sekitar-terdampak-covid-19">https://www.educastudio.com/news/educa-studio-berbagi-untuk-warga-sekitar-terdampak-covid-19</a>';
+// });
+
+// Route::prefix('program')->group(function () {
+//     Route::get('/', function () {
+//         return 'Halaman Program <br>
+//             Menampilkan Daftar Program (route prefix) <br>
+//             <a href="https://www.educastudio.com/program/karir">https://www.educastudio.com/program/karir</a> <br>
+//             <a href="https://www.educastudio.com/program/magang">https://www.educastudio.com/program/magang</a> <br>
+//             <a href="https://www.educastudio.com/program/kunjungan-industri">https://www.educastudio.com/program/kunjungan-industri</a>';
+//     });
+//     Route::get('/karir', function () {
+//         return '<a href="https://www.educastudio.com/program/karir">https://www.educastudio.com/program/karir</a>';
+//     });
+//     Route::get('/magang', function () {
+//         return '<a href="https://www.educastudio.com/program/magang">https://www.educastudio.com/program/magang</a>';
+//     });
+//     Route::get('/kunjungan-industri', function () {
+//         return '<a href="https://www.educastudio.com/program/kunjungan-industri">https://www.educastudio.com/program/kunjungan-industri</a>';
+//     });
+// });
+
+// Route::get('/about-us', function () {
+//     return 'Halaman About Us <br>
+//         Menampilkan About Us (route biasa) <br>
+//         <a href="https://www.educastudio.com/about-us">https://www.educastudio.com/about-us</a>';
+// });
+
+// Route::resource('contact-us', TugasController::class)->only(['index']);
+
+// Minggu 3
+Route::get('/', [WebController::class, 'home']);
+
+Route::prefix('/product')->group( function(){
+    Route::get('/', [WebController::class, 'product']);
 });
 
-Route::prefix('category')->group(function () {
-    Route::get('/', function () {
-        return 'Halaman Products <br>
-            Menampilkan daftar product ( route prefix) <br>
-            <a href="https://www.educastudio.com/category/marbel-edu-games">https://www.educastudio.com/category/marbel-edu-games</a> <br>
-            <a href="https://www.educastudio.com/category/marbel-and-friends-kids-games">https://www.educastudio.com/category/marbel-and-friends-kids-games</a> <br>
-            <a href="https://www.educastudio.com/category/riri-story-books">https://www.educastudio.com/category/riri-story-books</a> <br>
-            <a href="https://www.educastudio.com/category/kolak-kids-songs">https://www.educastudio.com/category/kolak-kids-songs</a>';
-    });
-    Route::get('/marbel-edu-games', function () {
-        return '<a href="https://www.educastudio.com/category/marbel-edu-games">https://www.educastudio.com/category/marbel-edu-games</a>';
-    });
-    Route::get('/marbel-and-friends-kids-games', function () {
-        return '<a href="https://www.educastudio.com/category/marbel-and-friends-kids-games">https://www.educastudio.com/category/marbel-and-friends-kids-games</a>';
-    });
-    Route::get('/riri-story-books', function () {
-        return '<a href="https://www.educastudio.com/category/riri-story-books">https://www.educastudio.com/category/riri-story-books</a>';
-    });
-    Route::get('/kolak-kids-songs', function () {
-        return '<a href="https://www.educastudio.com/category/kolak-kids-songs">https://www.educastudio.com/category/kolak-kids-songs</a>';
-    });
+Route::get('/news/{id}', [WebController::class, 'news']);
+
+Route::prefix('/program')->group( function(){
+    Route::get('/', [WebController::class, 'program']);
 });
 
-Route::get('/articles/{id}', function ($id) {
-    return 'Halaman News <br>
-        Menampilkan Daftar berita (route param) <br>
-        <a href="https://www.educastudio.com/news">https://www.educastudio.com/news</a> <br>
-        <a href="https://www.educastudio.com/news/educa-studio-berbagi-untuk-warga-sekitar-terdampak-covid-19">https://www.educastudio.com/news/educa-studio-berbagi-untuk-warga-sekitar-terdampak-covid-19</a>';
-});
+Route::get('/aboutUs', [WebController::class, 'aboutUs']);
 
-Route::prefix('program')->group(function () {
-    Route::get('/', function () {
-        return 'Halaman Program <br>
-            Menampilkan Daftar Program (route prefix) <br>
-            <a href="https://www.educastudio.com/program/karir">https://www.educastudio.com/program/karir</a> <br>
-            <a href="https://www.educastudio.com/program/magang">https://www.educastudio.com/program/magang</a> <br>
-            <a href="https://www.educastudio.com/program/kunjungan-industri">https://www.educastudio.com/program/kunjungan-industri</a>';
-    });
-    Route::get('/karir', function () {
-        return '<a href="https://www.educastudio.com/program/karir">https://www.educastudio.com/program/karir</a>';
-    });
-    Route::get('/magang', function () {
-        return '<a href="https://www.educastudio.com/program/magang">https://www.educastudio.com/program/magang</a>';
-    });
-    Route::get('/kunjungan-industri', function () {
-        return '<a href="https://www.educastudio.com/program/kunjungan-industri">https://www.educastudio.com/program/kunjungan-industri</a>';
-    });
-});
-
-Route::get('/about-us', function () {
-    return 'Halaman About Us <br>
-        Menampilkan About Us (route biasa) <br>
-        <a href="https://www.educastudio.com/about-us">https://www.educastudio.com/about-us</a>';
-});
-
-Route::resource('contact-us', TugasController::class)->only(['index']);
+Route::resource('/contactUs', ContactController::class);
