@@ -2,8 +2,12 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PengalamanKuliahController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TugasController;
 use App\Http\Controllers\WebController;
 use Illuminate\Support\Facades\Route;
@@ -108,18 +112,23 @@ use Illuminate\Support\Facades\Route;
 // Route::resource('contact-us', TugasController::class)->only(['index']);
 
 // Minggu 3
-Route::get('/', [WebController::class, 'home']);
+// Route::get('/', [WebController::class, 'home']);
 
-Route::prefix('/product')->group( function(){
-    Route::get('/', [WebController::class, 'product']);
-});
+// Route::prefix('/product')->group( function(){
+//     Route::get('/', [WebController::class, 'product']);
+// });
 
-Route::get('/news/{id}', [WebController::class, 'news']);
+// Route::get('/news/{id}', [WebController::class, 'news']);
 
-Route::prefix('/program')->group( function(){
-    Route::get('/', [WebController::class, 'program']);
-});
+// Route::prefix('/program')->group( function(){
+//     Route::get('/', [WebController::class, 'program']);
+// });
 
-Route::get('/aboutUs', [WebController::class, 'aboutUs']);
+// Route::get('/aboutUs', [WebController::class, 'aboutUs']);
 
-Route::resource('/contactUs', ContactController::class);
+// Route::resource('/contactUs', ContactController::class);
+
+Route::get('/', [BerandaController::class, 'index']);
+Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/profile', [ProfileController::class, 'index']);
+Route::get('/pengalaman-kuliah', [PengalamanKuliahController::class, 'index']);
