@@ -6,6 +6,7 @@ use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\KendaraanController;
 use App\Http\Controllers\PengalamanKuliahController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TugasController;
@@ -128,7 +129,4 @@ use Illuminate\Support\Facades\Route;
 
 // Route::resource('/contactUs', ContactController::class);
 
-Route::get('/', [BerandaController::class, 'index']);
-Route::get('/dashboard', [DashboardController::class, 'index']);
-Route::get('/profile', [ProfileController::class, 'index']);
-Route::get('/pengalaman-kuliah', [PengalamanKuliahController::class, 'index']);
+Route::get('/kendaraan', [KendaraanController::class, 'index']);
