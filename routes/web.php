@@ -112,21 +112,25 @@ use Illuminate\Support\Facades\Route;
 
 // Route::resource('contact-us', TugasController::class)->only(['index']);
 
-// Minggu 3
-// Route::get('/', [WebController::class, 'home']);
+//Minggu 3
+Route::get('/', [WebController::class, 'home']);
 
-// Route::prefix('/product')->group( function(){
-//     Route::get('/', [WebController::class, 'product']);
-// });
+Route::prefix('/product')->group( function(){
+    Route::get('/', [WebController::class, 'product']);
+});
 
-// Route::get('/news/{id}', [WebController::class, 'news']);
+Route::get('/news/{id}', [WebController::class, 'news']);
 
-// Route::prefix('/program')->group( function(){
-//     Route::get('/', [WebController::class, 'program']);
-// });
+Route::prefix('/program')->group( function(){
+    Route::get('/', [WebController::class, 'program']);
+});
 
-// Route::get('/aboutUs', [WebController::class, 'aboutUs']);
+Route::get('/aboutUs', [WebController::class, 'aboutUs']);
 
-// Route::resource('/contactUs', ContactController::class);
+Route::resource('/contactUs', ContactController::class);
+
+Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/profile', [ProfileController::class, 'index']);
+Route::get('/pengalaman-kuliah', [PengalamanKuliahController::class, 'index']);
 
 Route::get('/kendaraan', [KendaraanController::class, 'index']);
