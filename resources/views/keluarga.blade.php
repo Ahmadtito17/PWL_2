@@ -9,7 +9,7 @@
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="#">Home</a></li>
-          <li class="breadcrumb-item active">Hobi</li>
+          <li class="breadcrumb-item active">Keluarga</li>
         </ol>
       </div>
     </div>
@@ -22,7 +22,7 @@
   <!-- Default box -->
   <div class="card">
     <div class="card-header">
-      <h3 class="card-title">Hobi</h3>
+      <h3 class="card-title">Keluarga</h3>
 
       <div class="card-tools">
         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -38,16 +38,18 @@
         <thead>
         <tr>
           <th>No.</th>
-          <th>Hobi</th>
-          <th>Deskripsi</th>
+          <th>Nama</th>
+          <th>Peran</th>
+          <th>Jenis Kelamin</th>
         </tr>  
         </thead>
         <tbody>
-        @foreach ($hobi as $no => $m)
+        @foreach ($keluarga as $no => $m)
         <tr>
           <td>{{$m->no}}</td>
-          <td>{{$m->hobi}}</td>
-          <td>{{$m->deskripsi}}</td>
+          <td>{{$m->nama}}</td>
+          <td>{{$m->peran}}</td>
+          <td>{{$m->jk}}</td>
         </tr>
             
         @endforeach
