@@ -36,20 +36,38 @@
                  with font-awesome or any other icon font library -->
             <li class="nav-item">
               <a href="{{ url('/dashboard') }}" class="nav-link">
-                <i class="fas fa-tachometer-alt"></i>
+                <i class=""></i>
                 <p>Dashboard</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="{{ url('/profile') }}" class="nav-link">
-                <i class="fas fa-user"></i>
+                <i class=""></i>
                 <p>Profile</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="{{ url('/pengalaman-kuliah') }}" class="nav-link">
-                <i class="fas fa-history"></i>
+                <i class=""></i>
                 <p>Pengalaman Kuliah</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url('/hobi') }}" class="nav-link">
+                <i class=""></i>
+                <p>Hobi</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url('/keluarga') }}" class="nav-link">
+                <i class=""></i>
+                <p>Keluarga</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url('/mata-kuliah') }}" class="nav-link">
+                <i class=""></i>
+                <p>Mata Kuliah</p>
               </a>
             </li>
           </ul>
