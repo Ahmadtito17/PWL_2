@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             //KendaraanSeeder::class
             //HobiSeeder::class
             //KeluargaSeeder::class
+            MatkulSeeder::class
         ]);
     }
 }
