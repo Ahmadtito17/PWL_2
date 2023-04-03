@@ -10,6 +10,7 @@ use App\Http\Controllers\HobiController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KeluargaController;
 use App\Http\Controllers\KendaraanController;
+use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\MataKuliahController;
 use App\Http\Controllers\MatkulController;
 use App\Http\Controllers\PengalamanKuliahController;
@@ -150,5 +151,7 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/mata-kuliah', [MatkulController::class, 'index']);
 
     //Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+    Route::resource('/mahasiswa', MahasiswaController::class)->parameter('mahasiswa', 'id');
     
 });

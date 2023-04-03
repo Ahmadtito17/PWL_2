@@ -70,6 +70,12 @@
                 <p>Mata Kuliah</p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="{{ url('/mahasiswa') }}" class="nav-link">
+                <i class=""></i>
+                <p>Mahasiswa</p>
+              </a>
+            </li>
           </ul>
         </nav>
         <!-- /.sidebar-menu -->
