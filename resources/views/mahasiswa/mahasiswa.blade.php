@@ -41,6 +41,7 @@
             <th>No.</th>
             <th>Nim</th>
             <th>Nama</th>
+            <th>Kelas</th>
             <th>JK</th>
             <th>HP</th>
             <th>Action</th>
@@ -53,6 +54,7 @@
                     <td>{{++$i}}</td>
                     <td>{{$m->nim}}</td>
                     <td>{{$m->nama}}</td>
+                    <td>{{$m->kelas->nama_kelas}}</td>
                     <td>{{$m->jk}}</td>
                     <td>{{$m->hp}}</td>
                     <td>

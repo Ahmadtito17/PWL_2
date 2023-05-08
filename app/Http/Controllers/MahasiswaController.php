@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Mahasiswa;
 use App\Models\MahasiswaModel;
+use App\Models\kelas;
+use App\Models\KelasModel;
 use Illuminate\Http\Request;
 
 class MahasiswaController extends Controller
@@ -17,7 +19,7 @@ class MahasiswaController extends Controller
     {
         $mhs = MahasiswaModel::all();
         return view('mahasiswa.mahasiswa')
-                    ->with('mhs', $mhs);
+                     ->with('mhs', $mhs);
     }
 
     /**
@@ -27,8 +29,10 @@ class MahasiswaController extends Controller
      */
     public function create()
     {
+        $kelas = KelasModel::all();
         return view('mahasiswa.create_mahasiswa')
-                     ->with('url_form', url('/mahasiswa'));
+                     ->with('url_form', url('/mahasiswa'))
+                     ->with('kelas', $kelas);
     }
 
     /**
@@ -73,10 +77,12 @@ class MahasiswaController extends Controller
      */
     public function edit($id)
     {
+        $kelas = KelasModel::all();
         $mhs = MahasiswaModel::find($id);
         return view('mahasiswa.create_mahasiswa')
                     ->with('mhs', $mhs)
-                    ->with('url_form', url('/mahasiswa/'. $id));
+                    ->with('url_form', url('/mahasiswa/'. $id))
+                    ->with('kelas', $kelas);
     }
 
     /**
