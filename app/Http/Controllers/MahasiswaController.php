@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mahasiswa;
+use App\Models\mahasiswa_matkul;
 use App\Models\MahasiswaModel;
 use App\Models\kelas;
 use App\Models\KelasModel;
@@ -17,9 +18,9 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        $mhs = MahasiswaModel::all();
+        $mahasiswa = MahasiswaModel::all();
         return view('mahasiswa.mahasiswa')
-                     ->with('mhs', $mhs);
+                     ->with('mahasiswa', $mahasiswa);
     }
 
     /**
@@ -120,5 +121,14 @@ class MahasiswaController extends Controller
         MahasiswaModel::where('id', '=', $id)->delete();
         return redirect('mahasiswa')
             ->with('success', 'Mahasiswa Berhasil Dihapus');
+    }
+
+    public function nilai($id)
+    {
+        $mahasiswa = MahasiswaModel::where('id',$id)->first();
+        $nilai = mahasiswa_matkul::where('mahasiswa_id',$id)->get();
+        return view('mahasiswa.nilai_mahasiswa')
+                ->with('mahasiswa', $mahasiswa)
+                ->with('nilai', $nilai);
     }
 }

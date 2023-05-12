@@ -153,5 +153,7 @@ Route::middleware(['auth'])->group(function() {
     //Route::get('/home', [HomeController::class, 'index'])->name('home');
 
     Route::resource('/mahasiswa', MahasiswaController::class)->parameter('mahasiswa', 'id');
+
+    Route::get('/mahasiswa/{id}/nilai', [MahasiswaController::class, 'nilai']);
     
 });

@@ -10,6 +10,10 @@ class MatkulModel extends Model
     use HasFactory;
 
     protected $table = 'matkul';
-    protected $primaryKey = 'kode_mk';
-    protected $keyType = 'string';
+
+
+    public function mahasiswa_matakuliah()
+    {
+        return $this->hasMany(mahasiswa_matkul::class);
+    }
 }
