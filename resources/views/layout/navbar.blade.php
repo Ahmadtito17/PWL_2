@@ -4,18 +4,20 @@
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{ url('/dashboard') }}" class="nav-link">Dashboard</a>
-      </li>
     </ul>
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Navbar Search -->
       <li class="nav-item">
-        <a class="nav-link" data-widget="navbar-search" href="#" role="button">
-          <i class="fas fa-search"></i>
-        </a>
+        <form action="{{ url('logout') }}" method="POST">
+          @csrf
+          <button class="btn btn-danger" type="submit">
+            <i class="nav-icon fas fa-sign-out-alt"></i>
+            Logout
+          </button>
+        </form>
+      </li>
         <div class="navbar-search-block">
           <form class="form-inline">
             <div class="input-group input-group-sm">
