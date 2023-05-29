@@ -8,7 +8,7 @@
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item"><a href="{{ url('dashboard') }}">Home</a></li>
           <li class="breadcrumb-item active">Mata Kuliah</li>
         </ol>
       </div>
@@ -42,7 +42,7 @@
           <th>Nama</th>
           <th>SKS</th>
           <th>Dosen</th>
-        </tr>  
+        </tr>
         </thead>
         <tbody>
         @foreach ($matkul as $no => $m)
@@ -53,7 +53,7 @@
           <td>{{$m->sks}}</td>
           <td>{{$m->dosen}}</td>
         </tr>
-            
+
         @endforeach
       </table>
     </div>

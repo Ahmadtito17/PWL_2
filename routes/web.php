@@ -38,34 +38,34 @@ Route::middleware(['auth'])->group(function() {
     // Route::get('/', function () {
     //     echo "Selamat Datang";
     // });
-    
+
     // Route::get('/about', function () {
     //     echo "NIM: 2141720265, Nama: Ahmad Tito Nur Hendrawan";
     // });
-    
+
     // Route::get('/articles/{id}', function ($id) {
     //     echo "Halaman Artikel dengan ID $id";
     // });
-    
+
     // Route::get('/', [PageController::class, 'index']);
-    
+
     // Route::get('/about', [PageController::class, 'about']);
-    
+
     // Route::get('/articles/{id}', [PageController::class, 'articles']);
-    
+
     // Route::get('/', [HomeController::class, 'index']);
-    
+
     // Route::get('/about', [AboutController::class, 'index']);
-    
+
     // Route::get('/articles/{id}', [ArticleController::class, 'index']);
-    
+
     // //Minggu 2
-    
+
     // Route::get('/', function () {
     //     return "Halaman Home <br>
     //             Menampilkan halaman awal website";
     // });
-    
+
     // Route::prefix('category')->group(function () {
     //     Route::get('/', function () {
     //         return 'Halaman Products <br>
@@ -88,14 +88,14 @@ Route::middleware(['auth'])->group(function() {
     //         return '<a href="https://www.educastudio.com/category/kolak-kids-songs">https://www.educastudio.com/category/kolak-kids-songs</a>';
     //     });
     // });
-    
+
     // Route::get('/articles/{id}', function ($id) {
     //     return 'Halaman News <br>
     //         Menampilkan Daftar berita (route param) <br>
     //         <a href="https://www.educastudio.com/news">https://www.educastudio.com/news</a> <br>
     //         <a href="https://www.educastudio.com/news/educa-studio-berbagi-untuk-warga-sekitar-terdampak-covid-19">https://www.educastudio.com/news/educa-studio-berbagi-untuk-warga-sekitar-terdampak-covid-19</a>';
     // });
-    
+
     // Route::prefix('program')->group(function () {
     //     Route::get('/', function () {
     //         return 'Halaman Program <br>
@@ -114,37 +114,37 @@ Route::middleware(['auth'])->group(function() {
     //         return '<a href="https://www.educastudio.com/program/kunjungan-industri">https://www.educastudio.com/program/kunjungan-industri</a>';
     //     });
     // });
-    
+
     // Route::get('/about-us', function () {
     //     return 'Halaman About Us <br>
     //         Menampilkan About Us (route biasa) <br>
     //         <a href="https://www.educastudio.com/about-us">https://www.educastudio.com/about-us</a>';
     // });
-    
+
     // Route::resource('contact-us', TugasController::class)->only(['index']);
-    
+
     // //Minggu 3
     // Route::get('/', [WebController::class, 'home']);
-    
+
     // Route::prefix('/product')->group( function(){
     //     Route::get('/', [WebController::class, 'product']);
     // });
-    
+
     // Route::get('/news/{id}', [WebController::class, 'news']);
-    
+
     // Route::prefix('/program')->group( function(){
     //     Route::get('/', [WebController::class, 'program']);
     // });
-    
+
     Route::get('/aboutUs', [WebController::class, 'aboutUs']);
-    
+
     Route::resource('/contactUs', ContactController::class);
-    
+
     Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::get('/', [DashboardController::class, 'index']);
     Route::get('/profile', [ProfileController::class, 'index']);
     Route::get('/pengalaman-kuliah', [PengalamanKuliahController::class, 'index']);
-    
+
     Route::get('/kendaraan', [KendaraanController::class, 'index']);
     Route::get('/hobi', [HobiController::class, 'index']);
     Route::get('/keluarga', [KeluargaController::class, 'index']);
@@ -153,7 +153,8 @@ Route::middleware(['auth'])->group(function() {
     //Route::get('/home', [HomeController::class, 'index'])->name('home');
 
     Route::resource('/mahasiswa', MahasiswaController::class)->parameter('mahasiswa', 'id');
+    Route::post('/mahasiswa/data', [MahasiswaController::class, 'data']);
 
     Route::get('/mahasiswa/{id}/nilai', [MahasiswaController::class, 'nilai']);
-    
+
 });
