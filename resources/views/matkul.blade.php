@@ -20,22 +20,41 @@
 <section class="content">
 
   <!-- Default box -->
-  <div class="card">
-    <div class="card-header">
-      <h3 class="card-title">Daftar Mata Kuliah</h3>
+  <style>
+    .card-body {
+      background-color: #f0f0f0;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 0 auto;
+    }
 
-      <div class="card-tools">
-        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-          <i class="fas fa-minus"></i>
-        </button>
-        <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-    </div>
-    <div class="card-body">
-      <table class="table">
-        <thead>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    th, td {
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+
+    th {
+      background-color: #f7f7f7;
+      font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+  </style>
+
+  <div class="card-body">
+    <table class="table">
+      <thead>
         <tr>
           <th>No.</th>
           <th>Kode MK</th>
@@ -43,19 +62,31 @@
           <th>SKS</th>
           <th>Dosen</th>
         </tr>
-        </thead>
-        <tbody>
-        @foreach ($matkul as $no => $m)
+      </thead>
+      <tbody>
         <tr>
-          <td>{{$no+1}}</td>
-          <td>{{$m->kode_mk}}</td>
-          <td>{{$m->nama_mk}}</td>
-          <td>{{$m->sks}}</td>
-          <td>{{$m->dosen}}</td>
+          <td>1</td>
+          <td>MK001</td>
+          <td>Pemrograman Web Lanjut</td>
+          <td>3</td>
+          <td>Dr. John Doe</td>
         </tr>
-
-        @endforeach
-      </table>
-    </div>
+        <tr>
+          <td>2</td>
+          <td>MK002</td>
+          <td>Statistik Komputasi</td>
+          <td>4</td>
+          <td>Prof. Jane Smith</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>MK003</td>
+          <td>Jaringan Komputer</td>
+          <td>3</td>
+          <td>Dr. Michael Johnson</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+
 @endsection

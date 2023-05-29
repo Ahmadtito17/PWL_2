@@ -20,30 +20,45 @@
 <section class="content">
 
   <!-- Default box -->
-  <div class="card">
-    <div class="card-header">
-      <h3 class="card-title">Profile</h3>
+  <style>
+    .card {
+      background-color: #f0f0f0;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      font-family: Arial, sans-serif;
+      max-width: 400px;
+      margin: 0 auto;
+      text-align: center;
+    }
 
-      <div class="card-tools">
-        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-          <i class="fas fa-minus"></i>
-        </button>
-        <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
+    h1 {
+      color: #333;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .info {
+      color: #666;
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+
+    p {
+      margin: 5px 0;
+    }
+  </style>
+
+  <div class="card">
+    <h1>Informasi Mahasiswa</h1>
+    <div class="info">
+      <p>Nama: <span>{!! $nama !!}</span></p>
+      <p>NIM: <span>{!! $nim !!}</span></p>
+      <p>Program Studi: <span>{!! $prodi !!}</span></p>
+      <p>Jurusan: <span>{!! $jurusan !!}</span></p>
+      <p>Perguruan Tinggi: <span>{!! $pt !!}</span></p>
     </div>
-    <div class="card-body">
-      Nama : {!! $nama !!} <br>
-      NIM : {!! $nim !!} <br>
-      Program Studi : {!! $prodi !!} <br>
-      Jurusan : {!! $jurusan !!} <br>
-      Perguruan Tinggi : {!! $pt !!} <br>
-    </div>
-    <!-- /.card-body -->
-    <div class="card-footer">
-      Footer Profile
-    </div>
-    <!-- /.card-footer-->
+  </div>
+
   </div>
 @endsection

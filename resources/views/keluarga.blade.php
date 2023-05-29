@@ -20,40 +20,75 @@
 <section class="content">
 
   <!-- Default box -->
-  <div class="card">
-    <div class="card-header">
-      <h3 class="card-title">Data Keluarga</h3>
+  <style>
+    .card {
+      background-color: #f0f0f0;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 0 auto;
+    }
 
-      <div class="card-tools">
-        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-          <i class="fas fa-minus"></i>
-        </button>
-        <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-    </div>
-    <div class="card-body">
-      <table class="table">
-        <thead>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    th, td {
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+
+    th {
+      background-color: #f7f7f7;
+      font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+  </style>
+
+  <div class="card">
+    <table class="table">
+      <thead>
         <tr>
           <th>No.</th>
           <th>Nama</th>
           <th>Peran</th>
           <th>Jenis Kelamin</th>
         </tr>
-        </thead>
-        <tbody>
-        @foreach ($keluarga as $no => $m)
+      </thead>
+      <tbody>
         <tr>
-          <td>{{$m->no}}</td>
-          <td>{{$m->nama}}</td>
-          <td>{{$m->peran}}</td>
-          <td>{{$m->jk}}</td>
+          <td>1</td>
+          <td>John Doe</td>
+          <td>Ayah</td>
+          <td>Laki-laki</td>
         </tr>
-
-        @endforeach
-      </table>
-    </div>
+        <tr>
+          <td>2</td>
+          <td>Jane Doe</td>
+          <td>Ibu</td>
+          <td>Perempuan</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Michael Doe</td>
+          <td>Anak</td>
+          <td>Laki-laki</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Sarah Doe</td>
+          <td>Anak</td>
+          <td>Perempuan</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+
 @endsection

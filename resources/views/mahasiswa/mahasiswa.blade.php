@@ -1,65 +1,21 @@
 @extends('layout.template')
 
 @section('content')
-<div class="container-fluid">
-    <div class="row mb-2">
-      <div class="col-sm-6">
-        <h1>Data Mahasiswa</h1>
-      </div>
-      <div class="col-sm-6">
-        <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item"><a href="{{ url('dashboard') }}">Home</a></li>
-          <li class="breadcrumb-item active">Mahasiswa</li>
-        </ol>
-      </div>
-    </div>
-  </div><!-- /.container-fluid -->
-</section>
-
-<!-- Main content -->
-<section class="content">
-    <div class="card-body">
-      <button class="btn btn-sm btn-success my-2" data-toggle="modal" data-target="#modal_mahasiswa">Tambah Data Mahasiswa</button>
-      <table class="table table-bordered table-striped" id="data_mahasiswa">
-          <thead>
-              <tr>
-                  <th>No</th>
-                  <th>NIM</th>
-                  <th>Nama</th>
-                  <th>HP</th>
-                  <th>Action</th>
-              </tr>
-          </thead>
-          <tbody>
-            {{-- //   @if ($mahasiswa->count() > 0)
-            //       @foreach ($mahasiswa as $i => $mhs)
-            //           <tr>
-            //               <td>{{ $i + 1 }}</td>
-            //               <td>{{ $mhs->nim }}</td>
-            //               <td>{{ $mhs->nama }}</td>
-            //               <td>{{ $mhs->kelas->nama_kelas }}</td>
-            //               <td>{{ $mhs->jk }}</td>
-            //               <td>{{ $mhs->hp }}</td>
-            //               <td>
-            //                   <a href="{{ url('/mahasiswa/'.$mhs->id) }}" class="btn btn-sm btn-primary"><i class="fas fa-info pr-1"></i>Detail</a>
-            //                   <a href="{{ url('/mahasiswa/'.$mhs->id.'/edit/') }}" class="btn btn-sm btn-warning"><i class="fas fa-edit pr-1"></i>Edit</a>
-            //                   <form method="POST" action="{{ url('/mahasiswa/'.$mhs->id)}}" class="d-inline p-2">
-            //                       @csrf
-            //                       @method('DELETE')
-            //                       <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash pr-1"></i>Hapus</button>
-            //                   </form>
-            //                   <a href="{{ url('/mahasiswa/'.$mhs->id.'/nilai') }}" class="btn btn-sm btn-primary"><i class="fas fa-marker"></i>Nilai</a>
-            //               </td>
-            //           </tr>
-            //       @endforeach
-            //   @else
-            //       <tr>
-            //           <td colspan="6" class="text-center">Data tidak ada</td>
-            //       </tr>
-            //   @endif --}}
-          </tbody>
-      </table>
-    </div>
+    <h2>Data Mahasiswa</h2>
+    <button class="btn btn-sm btn-success my-2" data-toggle="modal" data-target="#modal_mahasiswa">Tambah Data</button>
+    <table class="table table-bordered table-striped" id="data_mahasiswa">
+        <thead>
+            <tr>
+                <th>NO</th>
+                <th>NIM</th>
+                <th>Nama</th>
+                <th>No HP</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+    </table>
 
     <div class="modal fade" id="modal_mahasiswa" style="display: none;" aria-hidden="true">
         <form method="post" action="{{ url('mahasiswa') }}" role="form" class="form-horizontal" id="form_mahasiswa">
@@ -103,25 +59,35 @@
     </div>
 @endsection
 
-@push('js_tambahan')
+@push('scripts')
 <script>
+    function updateData(th){
+        $('#modal_mahasiswa').modal('show');
+        $('#modal_mahasiswa .modal-title').html('Edit Data Mahasiswa');
+        $('#modal_mahasiswa #nim').val($(th).data('nim'));
+        $('#modal_mahasiswa #nama').val($(th).data('nama'));
+        $('#modal_mahasiswa #hp').val($(th).data('hp'));
+        $('#modal_mahasiswa #form_mahasiswa').attr('action', $(th).data('url'));
+        $('#modal_mahasiswa #form_mahasiswa').append('<input type="hidden" name="_method" value="PUT">');
+    }
+
     $(document).ready(function (){
         var dataMahasiswa = $('#data_mahasiswa').DataTable({
             processing:true,
             serverSide:true,
             ajax:{
-                url: '{{  url('mahasiswa/data') }}',
-                dataType: 'json',
-                type: 'POST',
+                'url': '{{  url('mahasiswa/data') }}',
+                'dataType': 'json',
+                'type': 'POST',
             },
             columns:[
-                {data:'nomor', searchable:false, sortable:false},
-                {data:'nim',name:'nim', sortable:false, searchable:true},
-                {data:'nama',name:'nama', sortable:false, searchable:true},
-                {data:'hp',name:'hp', sortable:false, searchable:true},
+                {data:'nomor', name:'nomor', searchable:false, sortable:false},
+                {data:'nim',name:'nim', sortable: false, searchable: true},
+                {data:'nama',name:'nama', sortable: false, searchable: true},
+                {data:'hp',name:'hp', sortable: false, searchable: true},
                 {data:'id',name:'id', sortable: false, searchable: false,
-                    render: function(data, row){
-                        var btn = `<a href="{{ url('/mahasiswa/')}}`+data+`/edit" class="btn btn-xs btn-warning"><i class="fa fa-edit"></i> Edit</a>` +
+                    render: function(data, type, row, meta){
+                        var btn = `<button data-url="{{ url('/mahasiswa')}}/`+data+`" class="btn btn-xs btn-warning" onclick="updateData(this)" data-id="`+row.id+`" data-nim="`+row.nim+`" data-nama="`+row.nama+`" data-hp="`+row.hp+`"><i class="fa fa-edit"></i> Edit</button>` +
                                   `<a href="{{ url('/mahasiswa/') }} " class="btn btn-xs btn-info"><i class="fa fa-list"></i> Detail</a>` +
                                   `<form method="POST" action="{{ url('/mahasiswa/') }}`+data+`">
                                         @csrf @method('DELETE')
@@ -130,6 +96,7 @@
                         return btn;
                     }
                 },
+
             ]
         });
 
@@ -164,3 +131,4 @@
     });
 </script>
 @endpush
+

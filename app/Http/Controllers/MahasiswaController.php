@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\KelasModel;
 use App\Models\Mahasiswa;
 use App\Models\mahasiswa_matkul;
 use App\Models\MahasiswaModel;
-use App\Models\kelas;
-use App\Models\KelasModel;
 use Illuminate\Http\Request;
-use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Validator;
+use Yajra\DataTables\DataTables;
 
 class MahasiswaController extends Controller
 {
@@ -28,9 +27,10 @@ class MahasiswaController extends Controller
         $data = MahasiswaModel::selectRaw('id, nim, nama, hp');
 
         return DataTables::of($data)
-            ->addIndexColumn()
-            ->make(true);
+                    ->addIndexColumn()
+                    ->make(true);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -63,6 +63,7 @@ class MahasiswaController extends Controller
         if($validator->fails()){
             return response()->json([
                 'status' => false,
+                'modal_close' => false,
                 'message' => 'Data gagal ditambahkan. ' .$validator->errors()->first(),
                 'data' => $validator->errors()
             ]);
@@ -80,18 +81,20 @@ class MahasiswaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Mahasiswa  $mahasiswa
+     * @param  \App\Models\MahasiswaModel  $mahasiswa
      * @return \Illuminate\Http\Response
      */
-    public function show(MahasiswaModel $mahasiswa)
+    public function show($id)
     {
-        //
+        $mahasiswa = MahasiswaModel::find($id);
+        return view('mahasiswa.detail')
+            ->with('mhs', $mahasiswa);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Mahasiswa  $mahasiswa
+     * @param  \App\Models\MahasiswaModel  $mahasiswa
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -108,37 +111,48 @@ class MahasiswaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Mahasiswa  $mahasiswa
+     * @param  \App\Models\MahasiswaModel  $mahasiswa
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
+        $rule = [
             'nim' => 'required|string|max:10|unique:mahasiswa,nim,'.$id,
             'nama' => 'required|string|max:50',
-            'jk' => 'required|in:l,p',
-            'tempat_lahir' => 'required|string|max:50',
-            'tanggal_lahir' => 'required|date',
-            'alamat' => 'required|string|max:255',
-            'hp' => 'required|digits_between:6,15'
-        ]);
+            'hp' => 'required|digits_between:6,15',
+        ];
 
-        $data = MahasiswaModel::where('id', '=', $id)->update($request->except(['_token', '_method']));
-        return redirect('mahasiswa')
-            ->with('success', 'Mahasiswa Berhasil Diedit');
+        $validator = Validator::make($request->all(), $rule);
+        if($validator->fails()){
+            return response()->json([
+                'status' => false,
+                'modal_close' => false,
+                'message' => 'Data gagal diedit. ' .$validator->errors()->first(),
+                'data' => $validator->errors()
+            ]);
+        }
+
+        $mhs = MahasiswaModel::where('id', $id)->update($request->except('_token', '_method'));
+
+        return response()->json([
+            'status' => ($mhs),
+            'modal_close' => $mhs,
+            'message' => ($mhs)? 'Data berhasil diedit' : 'Data gagal diedit',
+            'data' => null
+        ]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Mahasiswa  $mahasiswa
+     * @param  \App\Models\MahasiswaModel  $mahasiswa
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        MahasiswaModel::where('id', '=', $id)->delete();
+        MahasiswaModel::where('id', $id)->delete();
         return redirect('mahasiswa')
-            ->with('success', 'Mahasiswa Berhasil Dihapus');
+            ->with('Success', 'Mahasiswa Berhasil Dihapus');
     }
 
     public function nilai($id)

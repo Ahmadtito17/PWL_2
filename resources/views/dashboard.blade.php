@@ -21,26 +21,34 @@
 <section class="content">
 
   <!-- Default box -->
-  <div class="card">
-    <div class="card-header">
-      <h3 class="card-title">Dashboard</h3>
+  <style>
+    .card {
+      line-height: 1.5;
+    }
 
-      <div class="card-tools">
-        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-          <i class="fas fa-minus"></i>
-        </button>
-        <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-    </div>
-    <div class="card-body">
-      Selamat Datang di Pemrograman Web Lanjut
-    </div>
-    <!-- /.card-body -->
-    <div class="card-footer">
-      Footer Dashboard
-    </div>
-    <!-- /.card-footer-->
+    .card h3 {
+      margin-bottom: 0.5em;
+    }
+
+    .card h5 {
+      margin-top: 0.5em;
+      margin-bottom: 0.5em;
+    }
+
+    .card p {
+      margin-bottom: 0;
+    }
+  </style>
+
+  <div class="card">
+    <h3><b>Selamat Datang di</b></h3>
+
+    <h5>
+      <p>Mata Kuliah Pemrograman Web Lanjut</p>
+      <p>Jurusan Teknologi Informasi</p>
+      <p>Politeknik Negeri Malang</p>
+    </h5>
   </div>
+
+
 @endsection
