@@ -59,6 +59,4 @@
       <p>Perguruan Tinggi: <span>{!! $pt !!}</span></p>
     </div>
   </div>
-
-  </div>
 @endsection
