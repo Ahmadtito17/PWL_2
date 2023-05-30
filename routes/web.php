@@ -154,6 +154,7 @@ Route::middleware(['auth'])->group(function() {
 
     Route::resource('/mahasiswa', MahasiswaController::class)->parameter('mahasiswa', 'id');
     Route::post('/mahasiswa/data', [MahasiswaController::class, 'data']);
+    Route::post('/mahasiswa/delete/{id}', [MahasiswaController::class, 'destroy']);
 
     Route::get('/mahasiswa/{id}/nilai', [MahasiswaController::class, 'nilai']);
 
