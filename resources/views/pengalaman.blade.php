@@ -13,13 +13,9 @@
         </ol>
       </div>
     </div>
-  </div><!-- /.container-fluid -->
-</section>
+</div>
 
-<!-- Main content -->
 <section class="content">
-
-  <!-- Default box -->
   <style>
     .card {
       background-color: #f0f0f0;
@@ -56,4 +52,5 @@
       <li>Adanya hambatan dalam membangun hubungan sosial dan networking.</li>
     </ul>
   </div>
+</section>
 @endsection

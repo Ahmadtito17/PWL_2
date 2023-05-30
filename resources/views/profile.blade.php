@@ -13,13 +13,9 @@
         </ol>
       </div>
     </div>
-  </div><!-- /.container-fluid -->
-</section>
+</div>
 
-<!-- Main content -->
 <section class="content">
-
-  <!-- Default box -->
   <style>
     .card {
       background-color: #f0f0f0;
@@ -59,4 +55,5 @@
       <p>Perguruan Tinggi: <span>{!! $pt !!}</span></p>
     </div>
   </div>
+</section>
 @endsection

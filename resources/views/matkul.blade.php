@@ -13,13 +13,9 @@
         </ol>
       </div>
     </div>
-  </div><!-- /.container-fluid -->
-</section>
+</div>
 
-<!-- Main content -->
 <section class="content">
-
-  <!-- Default box -->
   <style>
     .card-body {
       background-color: #f0f0f0;
@@ -88,5 +84,5 @@
       </tbody>
     </table>
   </div>
-
+</section>
 @endsection
