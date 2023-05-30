@@ -23,7 +23,7 @@
         <div class="modal-dialog modal-">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Default Modal</h4>
+                    <h4 class="modal-title">Data Mahasiswa</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
@@ -86,15 +86,17 @@
                 {data:'nama',name:'nama', sortable: false, searchable: true},
                 {data:'hp',name:'hp', sortable: false, searchable: true},
                 {data:'id',name:'id', sortable: false, searchable: false,
-                    render: function(data, type, row, meta){
-                        var btn = `<button data-url="{{ url('/mahasiswa')}}/`+data+`" class="btn btn-xs btn-warning" onclick="updateData(this)" data-id="`+row.id+`" data-nim="`+row.nim+`" data-nama="`+row.nama+`" data-hp="`+row.hp+`"><i class="fa fa-edit"></i> Edit</button>` +
-                                  `<a href="{{ url('/mahasiswa/') }} " class="btn btn-xs btn-info"><i class="fa fa-list"></i> Detail</a>` +
-                                  `<form method="POST" action="{{ url('/mahasiswa/') }}`+data+`">
-                                        @csrf @method('DELETE')
-                                        <button type="submit" class="btn btn-xs btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><i class="fa fa-trash"></i> Hapus</button>
-                                    </form>`;
-                        return btn;
-                    }
+                render: function(data, type, row, meta) {
+                    var btn = `<div class="btn-group">` +
+                        `<button data-url="{{ url('/mahasiswa')}}/` + data + `" class="btn btn-xs btn-warning" onclick="updateData(this)" data-id="` + row.id + `" data-nim="` + row.nim + `" data-nama="` + row.nama + `" data-hp="` + row.hp + `"><i class="fa fa-edit"></i> Edit</button>` +
+                        `<a href="{{ url('/mahasiswa/') }}" class="btn btn-xs btn-info"><i class="fa fa-list"></i> Detail</a>` +
+                        `<form method="POST" action="{{ url('/mahasiswa/') }}` + data + `">` +
+                            `@csrf @method('DELETE')` +
+                            `<button type="submit" class="btn btn-xs btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><i class="fa fa-trash"></i> Hapus</button>` +
+                            `</form>` +
+                            `</div>`;
+                    return btn;
+                }
                 },
 
             ]
@@ -131,4 +133,3 @@
     });
 </script>
 @endpush
-

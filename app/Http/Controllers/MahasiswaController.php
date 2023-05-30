@@ -31,7 +31,6 @@ class MahasiswaController extends Controller
                     ->make(true);
     }
 
-
     /**
      * Show the form for creating a new resource.
      *
@@ -87,8 +86,8 @@ class MahasiswaController extends Controller
     public function show($id)
     {
         $mahasiswa = MahasiswaModel::find($id);
-        return view('mahasiswa.detail')
-            ->with('mhs', $mahasiswa);
+        return view('mahasiswa.detail_mahasiswa')
+            ->with('mahasiswa', $mahasiswa);
     }
 
     /**
